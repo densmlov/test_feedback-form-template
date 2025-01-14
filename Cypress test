@@ -1,17 +1,17 @@
-describe('Feedback Form Submission', () => {
-  it('should successfully submit the form with valid data and display a success message', () => {
+describe('Форма обратной связи', () => {
+  it('Отправляет корректную форму и выдаёт сообщение об успешной операции', () => {
     cy.visit('/feedback-form');
 
-    cy.get('input[name="name"]').type('John Doe');
-    cy.get('input[name="email"]').type('johndoe@example.com');
+    cy.get('input[name="name"]').type('Иван Иванов');
+    cy.get('input[name="email"]').type('ivanivan@example.com');
     cy.get('input[name="phone"]').type('1234567890');
-    cy.get('select[name="purpose"]').select('General Inquiry');
-    cy.get('textarea[name="message"]').type('This is a test message for the feedback form.');
+    cy.get('select[name="purpose"]').select('Другое');
+    cy.get('textarea[name="message"]').type('Тестовое сообщение.');
 
     cy.get('button[type="submit"]').click();
 
     cy.get('.success-message')
       .should('be.visible')
-      .and('contain', 'Thank you for your feedback!');
+      .and('contain', 'Спасибо за обратную связь!!');
   });
 });
